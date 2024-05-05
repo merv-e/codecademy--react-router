@@ -20,16 +20,20 @@ import {
 import "./App.css";
 
 // 2. basamak
-const router = createBrowserRouter( 
+const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
-      <Route path="about" element={<About />}/>
-      <Route path="sign-up" element={<SignUp/>}/>
-      <Route path="articles" element={<Articles/>}/>
-      <Route path="categories" element={<Categories/>}/>
-      <Route path="profile" element={<Profile/>}/>
-      <Route path="articles/:title" element={<Article/>}/>
-      <Route path="authors/:name" element={<Author/>}/>
+      <Route path="about" element={<About />} />
+      <Route path="sign-up" element={<SignUp />} />
+      <Route path="articles" element={<Articles />} />
+      <Route path="categories" element={<Categories />}>
+        <Route path=":name" element={<Category />} />
+      </Route>
+      <Route path="profile" element={<Profile />}>
+        <Route path="edit" element={<EditProfileForm />} />
+      </Route>
+      <Route path="articles/:title" element={<Article />} />
+      <Route path="authors/:name" element={<Author />} />
     </Route>
   )
 );
